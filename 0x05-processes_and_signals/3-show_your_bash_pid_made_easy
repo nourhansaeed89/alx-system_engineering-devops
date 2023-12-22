@@ -2,8 +2,8 @@
 # This script displays the PID and process name of processes whose name contains the word "bash"
 
 # Find all processes with the name "bash" and extract PID and process name
-for pid in $(pgrep bash); do
-	# Get the process name
-	process_name=$(ps -p "$pid" -o comm=)
-	echo "$pid $process_name"
-done
+while read -r pid; do
+    # Get the process name
+    process_name=$(cat "/proc/$pid/cmdline" | tr '\0' ' ')
+    echo "$pid $process_name"
+done < <(pgrep bash)
