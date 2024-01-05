@@ -1,18 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# this file displays TCP and UDP
 
-# Display listening ports with PID and program name
-
-echo "Active Internet connections (only servers)"
-echo "Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name"
-
-# Display TCP listening ports
-netstat -tlnp | awk '$1 == "tcp" {print $1 "\t" $4 "\t\t" $7}' | sed 's/.*://' | awk '{print "tcp\t0\t0\t*:" $1 "\t\t*:*" "\t\tLISTEN\t\t" $2}'
-
-# Display UDP listening ports
-netstat -ulnp | awk '$1 == "udp" {print $1 "\t" $4 "\t\t\t\t" $6}' | sed 's/.*://' | awk '{print "udp\t0\t0\t*:" $1 "\t\t\t\t*:*" "\t\t" $2}'
-
-echo "Active UNIX domain sockets (only servers)"
-echo "Proto RefCnt Flags       Type       State         I-Node   PID/Program name    Path"
-
-# Display UNIX domain sockets
-netstat -lx | awk '$1 == "unix" {print $1 "\t" $6 "\t\t\t" $7 "\t\t" $8 "\t\t" $9 "\t\t" $10 "\t\t" $11 "\t\t" $12}' | awk '{print $1 "\t" $2 "\t\t" $3 "\t" $4 "\t\t" $5 "\t\t" $6 "\t\t" $7 "\t\t" $8 "\t\t" $9}'
+netstat -l
