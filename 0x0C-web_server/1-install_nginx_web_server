@@ -7,7 +7,7 @@ apt-get update
 apt-get install -y nginx
 
 # Create index.html file with "Hello World!" content
-echo "Hello World!" > /var/www/html/index.html
+echo "Holberton School" > /var/www/html/index.html
 
 # Start Nginx service
 service nginx start
