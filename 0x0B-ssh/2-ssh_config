@@ -1,0 +1,3 @@
+echo "Host *" >> ~/.ssh/config
+echo "    IdentityFile ~/.ssh/school" >> ~/.ssh/config
+echo "    PasswordAuthentication no" >> ~/.ssh/config
