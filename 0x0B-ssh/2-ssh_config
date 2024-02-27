@@ -1,3 +1,4 @@
-echo "Host *" >> ~/.ssh/config
-echo "    IdentityFile ~/.ssh/school" >> ~/.ssh/config
-echo "    PasswordAuthentication no" >> ~/.ssh/config
+# ssh config file
+Host *
+      PasswordAuthentication no
+      IdentifyFile ~/.ssh/school
