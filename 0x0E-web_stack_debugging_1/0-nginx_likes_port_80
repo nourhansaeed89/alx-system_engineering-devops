@@ -1,28 +1,6 @@
 #!/usr/bin/env bash
-
-# Check if Nginx is installed
-if ! command -v nginx &> /dev/null; then
-    echo "Nginx is not installed. Please install Nginx and try again."
-    exit 1
-fi
-
-# Check if Nginx configuration file exists
-nginx_conf="/etc/nginx/sites-enabled/default"
-if [ ! -f "$nginx_conf" ]; then
-    echo "Nginx configuration file not found at $nginx_conf"
-    exit 1
-fi
-
-# Update Nginx configuration to listen on port 80 for all active IPv4 IPs
-sed -i '/listen [0-9]\+;/ s/[0-9]\+/80/' "$nginx_conf"
-
-# Restart Nginx service
+#configure nginx server to listen for port 80
+#this is spam
+#this is spam
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
 service nginx restart
-
-# Check if Nginx is now listening on port 80 for all active IPv4 IPs
-if ! netstat -tuln | grep -q ':80'; then
-    echo "Failed to configure Nginx to listen on port 80 for all active IPv4 IPs."
-    exit 1
-fi
-
-echo "Nginx is now listening on port 80 for all active IPv4 IPs."
