@@ -1,14 +1,6 @@
-#!/usr/bin/env bash
-# This is the HAProxy configuration file for SSL termination
-
-frontend www-http
-    bind *:80
-    reqadd X-Forwarded-Proto:\ http
-    default_backend www-backend
-
 frontend www-https
     bind *:443 ssl crt /etc/ssl/certs/your_domain.pem
-    reqadd X-Forwarded-Proto:\ https
+    http-request set-header X-Forwarded-Proto https if { ssl_fc }
     default_backend www-backend
 
 backend www-backend
