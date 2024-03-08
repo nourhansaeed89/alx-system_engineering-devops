@@ -1,6 +1,6 @@
 frontend www-https
     bind *:443 ssl crt /etc/ssl/certs/your_domain.pem
-    http-request set-header X-Forwarded-Proto https if { ssl_fc }
+    http-request set-header X-Forwarded-Proto https
     default_backend www-backend
 
 backend www-backend
